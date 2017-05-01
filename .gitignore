@@ -14,14 +14,13 @@
 !LICENSE
 !README.md
 !.editorconfig
-!.flowconfig
 !.gitattributes
 !.gitignore
 !/.vscode
 !/src
-!/test
 !/package.json
-!/protractor.conf.js
+!/tsconfig.json
+!/karma.conf.js
 !/webpack.config.js
 
 

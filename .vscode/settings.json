@@ -1,7 +1,9 @@
 {
-	// Because Flow overrides it
-	"javascript.validate.enable": false,
+	// Typescript
+	"typescript.check.tscVersion": false,
+	"typescript.tsdk": "node_modules/typescript/lib",
 
+	// Exclude files and folders
 	"files.exclude": {
 		"LICENSE": true,
 		"*.lnk": true,
@@ -14,12 +16,9 @@
 		".gitignore": true,
 		".gitattributes": true,
 		".chrome": true,
-		".nyc_output": true,
 		".vscode": true,
-		"_ideas": true,
-		"_utile": true,
-		"coverage": true,
 		"node_modules": true,
+		"logs": true,
 		"www": true
 	},
 	"search.exclude": {
@@ -34,12 +33,9 @@
 		".gitignore": true,
 		".gitattributes": true,
 		".chrome": true,
-		".nyc_output": true,
 		".vscode": true,
-		"_ideas": true,
-		"_utile": true,
-		"coverage": true,
 		"node_modules": true,
+		"logs": true,
 		"www": true
 	}
 }

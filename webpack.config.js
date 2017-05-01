@@ -5,12 +5,13 @@ const postcss_cssnext = require('postcss-cssnext');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const SriPlugin = require('webpack-subresource-integrity');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const src = path.resolve(__dirname, 'src');
-const www = path.resolve(__dirname, 'www');
 
 
-module.exports = ({protractor = false, minify = false} = {}) => {
+module.exports = ({minify = false} = {}) => {
+	const src = path.resolve(__dirname, 'src');
+	const www = path.resolve(__dirname, 'www');
 	const env = minify ? 'production' : 'development';
+
 	const plugins = [
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify(env)
@@ -26,11 +27,7 @@ module.exports = ({protractor = false, minify = false} = {}) => {
 			}
 		}),
 		new ExtractTextPlugin('bundle.css'),
-		new HtmlWebpackPlugin({
-			title: `Env: ${env}`
-			// hash: true, // only if the hash is not part of the filename already
-			// template: path.join(__dirname, 'src/web.html')
-		})
+		new HtmlWebpackPlugin({title: `Env: ${env}`})
 	];
 	if (minify){
 		plugins.push(
@@ -44,13 +41,6 @@ module.exports = ({protractor = false, minify = false} = {}) => {
 				}
 			})
 		);
-	}
-
-	if (protractor){
-		throw new Error('TODO calculate the list of e2e tests');
-		//
-		// TODO entry should be the e2e tests, not /src/web.js
-		//
 	}
 
 	return {
@@ -86,7 +76,6 @@ module.exports = ({protractor = false, minify = false} = {}) => {
 						options: {
 							compact: true,
 							presets: [
-								'flow',
 								['env', {
 									modules: false,
 									useBuiltins: true,
