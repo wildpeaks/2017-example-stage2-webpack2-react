@@ -25,11 +25,11 @@ and *Eslint* (listed in the workspace recommended extensions).
 
 ## Test and Analyze
 
-Unit tests use Mocha and are run in **Karma**.
+Unit tests use **Mocha**, **Enzyme** and **Sinon**, and are run in **Karma**.
 You can change the list of webdrivers in `/karma.conf.js` (currently: IE, Chrome, and Firefox).
 Results are outputted in `/logs/karma.tests.html`.
 
-Code Coverage also runs in Karma, and is outputted in `/logs/coverage`.
+**Code Coverage** also runs in Karma, and is outputted in `/logs/coverage`.
 
-Webpack Bundle Analyzer generates `/www/webpack.stats.html` and `/www/webpack.stats.json`.
+**Webpack Bundle Analyzer** generates `/www/webpack.stats.html` and `/www/webpack.stats.json`.
 

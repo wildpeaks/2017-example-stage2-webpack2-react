@@ -29,7 +29,7 @@ module.exports = config => {
 	};
 
 	config.set({
-		browsers: [/*'IE', */'Chrome'/*, 'Firefox', 'PhantomJS'*/],
+		browsers: ['IE', 'Chrome', 'Firefox'/*, 'PhantomJS'*/],
 		frameworks: ['mocha'],
 		client: {
 			mocha: {
