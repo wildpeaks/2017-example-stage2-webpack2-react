@@ -56,6 +56,9 @@
   "devDependencies": {
     "typescript": "2.3.2",
     "@types/mocha": "2.2.41",
+    "@types/react": "15.0.23",
+    "@types/prop-types": "15.5.1",
+    "@types/enzyme": "2.7.9",
 
     "istanbul-instrumenter-loader": "2.0.0",
     "karma": "1.6.0",
