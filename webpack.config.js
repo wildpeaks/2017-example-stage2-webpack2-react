@@ -12,38 +12,7 @@ module.exports = ({minify = false} = {}) => {
 	const www = path.resolve(__dirname, 'www');
 	const env = minify ? 'production' : 'development';
 
-	const plugins = [
-		new webpack.DefinePlugin({
-			'process.env.NODE_ENV': JSON.stringify(env)
-		}),
-		new SriPlugin({
-			hashFuncNames: ['sha256', 'sha384'],
-			enabled: minify
-		}),
-		new webpack.LoaderOptionsPlugin({
-			minimize: minify,
-			options: {
-				context: __dirname
-			}
-		}),
-		new ExtractTextPlugin('bundle.css'),
-		new HtmlWebpackPlugin({title: `Env: ${env}`})
-	];
-	if (minify){
-		plugins.push(
-			new webpack.optimize.UglifyJsPlugin({
-				sourceMap: 'source-map',
-				compress: {
-					warnings: false
-				},
-				output: {
-					comments: false
-				}
-			})
-		);
-	}
-
-	return {
+	const config = {
 		devtool: 'source-map',
 		target: 'web',
 		entry: './src/web.js',
@@ -62,7 +31,23 @@ module.exports = ({minify = false} = {}) => {
 			historyApiFallback: true,
 			stats: 'errors-only'
 		},
-		plugins,
+		plugins: [
+			new webpack.DefinePlugin({
+				'process.env.NODE_ENV': JSON.stringify(env)
+			}),
+			new SriPlugin({
+				hashFuncNames: ['sha256', 'sha384'],
+				enabled: minify
+			}),
+			new webpack.LoaderOptionsPlugin({
+				minimize: minify,
+				options: {
+					context: __dirname
+				}
+			}),
+			new ExtractTextPlugin('bundle.css'),
+			new HtmlWebpackPlugin({title: `Env: ${env}`})
+		],
 		module: {
 			rules: [
 				{
@@ -145,4 +130,20 @@ module.exports = ({minify = false} = {}) => {
 			hints: false
 		}
 	};
+
+	if (minify){
+		config.plugins.push(
+			new webpack.optimize.UglifyJsPlugin({
+				sourceMap: 'source-map',
+				compress: {
+					warnings: false
+				},
+				output: {
+					comments: false
+				}
+			})
+		);
+	}
+
+	return config;
 };
